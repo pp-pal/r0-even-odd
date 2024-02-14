@@ -1,6 +1,6 @@
 ## Description
 
-This is a simple example of RISC Zero code. It includes two methods, `check-odd` and `check-even`, that will be executed inside the RISC Zero zkVM.
+This is a simple example of RISC Zero code. It includes three methods, `check_odd`, `check_even` and `check_adult`, that will be executed inside the RISC Zero zkVM.
 
 ## Prerequisites
 
@@ -19,6 +19,10 @@ project_name
 └── methods
 	├── Cargo.toml                 <-- [Defines the guest methods here]
 	├── build.rs
+	├── check-adult
+	│   ├── Cargo.toml
+	│   └── src
+	│   	└── main.rs              <-- [The check-adult guest code goes here]
 	├── check-even
 	│   ├── Cargo.toml
 	│   └── src
@@ -33,8 +37,21 @@ project_name
 
 ## How To Run
 
+- Build project
 ```bash
-cargo run -r
+cargo build -r
+```
+- Run `check_even`
+```bash
+./target/release/host check_even 18
+```
+- Run `check_odd`
+```bash
+./target/release/host check_odd 19
+```
+- Run `check_adult`
+```bash
+./target/release/host check_adult 2006-02-18
 ```
 
 ## References
